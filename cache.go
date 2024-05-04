@@ -1,5 +1,4 @@
 package cache
-
 import "errors"
 
 type Cache struct {
@@ -12,7 +11,7 @@ func NewCache() Cache {
 	}
 }
 
-func (c Cache) get(key string) (value any, err error) {
+func (c Cache) Get(key string) (value any, err error) {
 	// получаем по ключу значение элемента
 
 	value, ok := c.items[key]
@@ -24,7 +23,7 @@ func (c Cache) get(key string) (value any, err error) {
 	return "", errors.New("Key not exist")
 }
 
-func (c Cache) delete(key string) (res bool, err error) {
+func (c Cache) Delete(key string) (res bool, err error) {
 	_, ok := c.items[key]
 
 	if ok == true {
@@ -35,7 +34,7 @@ func (c Cache) delete(key string) (res bool, err error) {
 	return false, errors.New("Key not exist")
 }
 
-func (c Cache) set(key string, value any) (res bool) {
+func (c Cache) Set(key string, value any) (res bool) {
 	c.items[key] = value
 	return true
 }
